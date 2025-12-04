@@ -3,6 +3,7 @@
 #include <string>
 #include <syncstream>
 #include <thread>
+#include <chrono>
 
 #define sync_cout std::osyncstream(std::cout)
 

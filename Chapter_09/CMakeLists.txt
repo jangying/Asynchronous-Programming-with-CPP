@@ -1,6 +1,18 @@
 # Output directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_DIR}/Chapter_09)
 
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 NEW)
+endif()
+find_package(Boost REQUIRED COMPONENTS asio)
+
+if (WIN32)
+  add_definitions(-D_WIN32_WINNT=0x0A00) 
+endif()
+if(MSVC)
+    add_compile_options(/MD)
+endif()
+
 # Create executable for each cpp file
 file(GLOB SOURCES "*.cpp")
 foreach(SOURCE ${SOURCES})

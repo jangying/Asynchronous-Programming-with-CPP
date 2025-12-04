@@ -18,7 +18,7 @@ class Timer {
         auto value = duration_cast<milliseconds>(interval);
         sync_cout << "Timer: Starting with interval of " << value << std::endl;
 
-        t = std::jthread([&](std::stop_token stop_token) {
+        t = std::jthread([this, interval, callback](std::stop_token stop_token) {
             while (!stop_token.stop_requested()) {
                 sync_cout << "Timer: Running callback " << val.load() << " ...\n";
                 val++;
